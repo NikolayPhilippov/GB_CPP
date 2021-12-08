@@ -250,12 +250,10 @@ int main()
 		}
 		else if (enter == 2)
 		{
-			std::cout << "Введите размер стороны Х :";
+			std::cout << "Введите размер стороны Х / Y :";
 			std::cin >> sideX;
-			std::cout << "Введите размер стороны Y :";
-			std::cin >> sideY;
 			Figure* figure;
-			Square square(sideX, sideY);
+			Square square(sideX, sideX);
 			figure = &square;
 			figure->area();
 		}

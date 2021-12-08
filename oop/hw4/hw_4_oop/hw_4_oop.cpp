@@ -58,7 +58,7 @@ public:
 
     void print()
     {
-       for (size_t i = 0;  i < m_size; i++)
+       for (size_t i = 0;  i < m_size; ++i)
            {
             std::cout << *(m_data + i) << "\t";
            }
@@ -97,7 +97,7 @@ public:
     {
         int temp = 0;
         std::sort(m_data, m_data + m_size);
-        for (size_t i = 0; i < m_size; i++)
+        for (size_t i = 0; i < m_size; ++i)
             if (m_data[i] != m_data[i + 1])
             {
                 temp++;
