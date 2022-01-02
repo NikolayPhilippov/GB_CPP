@@ -9,7 +9,7 @@ private:
 	T value2;
 public:
 	Pair1(const T& val1, const T& val2) : value1(val1), value2(val2) { };
-	~Pair1() {};
+	~Pair1() = default;
 	const T& first() { return value1; };
 	const T& second() { return value2; };
 };
@@ -23,7 +23,7 @@ protected:
 	T2 value2;
 public:
 	Pair(const T1& val1, const T2& val2) : value1(val1), value2(val2) {};
-	~Pair() { };
+	~Pair() = default;
 	const T1& first() { return value1; };
 	const T2& second() { return value2; };
 
@@ -33,7 +33,7 @@ template <class H>
 class StringValuePair : public Pair<std::string, H>
 {
 public:
-	StringValuePair(const std::string& str, const H& val2) : Pair<std::string, H>(str, val2); {};
+	StringValuePair(const std::string& str, const H& val2) : Pair<std::string, H>(str, val2) { };
 };
 
 int main()
