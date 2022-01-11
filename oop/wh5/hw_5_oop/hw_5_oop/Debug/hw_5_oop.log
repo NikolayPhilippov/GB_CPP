@@ -1,6 +1,0 @@
-﻿  hw_5_oop.cpp
-D:\repo_gb\GB_CPP\oop\wh5\hw_5_oop\hw_5_oop\hw_5_oop.cpp(36,90): error C2760: синтаксическая ошибка: непредвиденный токен ";"; требуется "{"
-D:\repo_gb\GB_CPP\oop\wh5\hw_5_oop\hw_5_oop\hw_5_oop.cpp(37): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "StringValuePair<H>"
-D:\repo_gb\GB_CPP\oop\wh5\hw_5_oop\hw_5_oop\hw_5_oop.cpp(36,92): error C2059: синтаксическая ошибка: {
-D:\repo_gb\GB_CPP\oop\wh5\hw_5_oop\hw_5_oop\hw_5_oop.cpp(36,92): error C2334: непредвиденные лексемы перед "{"; пропуск вероятного тела функции
-D:\repo_gb\GB_CPP\oop\wh5\hw_5_oop\hw_5_oop\hw_5_oop.cpp(36,77): fatal error C1903: не удается восстановить после предыдущих ошибок; остановка компиляции
