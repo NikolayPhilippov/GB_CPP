@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 
-int checkInt() {
+int checkInt()
+{
 	std::string str;
 	bool flag = true;
 	do {
@@ -23,7 +24,8 @@ int checkInt() {
 
 class ENDLL
 {
-	friend std::ostream& operator << (std::ostream& out, const ENDLL& endll) {
+	friend std::ostream& operator << (std::ostream& out, const ENDLL& endll)
+	{
 		out << std::endl << std::endl << std::flush;
 		return out;
 	};

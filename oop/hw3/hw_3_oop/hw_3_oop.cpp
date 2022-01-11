@@ -153,30 +153,27 @@ public:
 
 	bool operator >(const Fraction& other)
 	{
-		if ((this->Numerator * other.Denominator) - (other.Numerator * this->Denominator) > 0) { return true; }
-		else { return false; }
+		return ( ( (this->Numerator * other.Denominator) - (other.Numerator * this->Denominator) ) > 0);
 	};
 
 	bool operator <(const Fraction& other)
 	{
-		if ((other.Numerator * this->Denominator) - (this->Numerator * other.Denominator) > 0) { return true; }
-		else { return false; }
+		return  ( ( (other.Numerator * this->Denominator) - (this->Numerator * other.Denominator) ) > 0);
 	};
 
 	bool operator ==(const Fraction& other)
 	{
-		return ((this->Numerator = other.Numerator && this->Denominator == other.Numerator));
+		return ( (this->Numerator = other.Numerator && this->Denominator == other.Numerator) );
 	};
+
 	bool operator !=(const Fraction& other)
 	{
-		return !((this->Numerator = other.Numerator && this->Denominator == other.Numerator));
+		return !( (this->Numerator = other.Numerator && this->Denominator == other.Numerator) );
 	};
-
-
-
 
 	int GetNumerator() { return Numerator; };
 	int GetDenominator() { return Denominator; };
+
 	void SetNumerator()
 	{
 		int val_1;
@@ -184,17 +181,19 @@ public:
 		std::cin >> val_1;
 		Numerator = val_1;
 	};
+
 	void SetDenominator()
 	{
 		int val_2;
 		std::cout << "Введите знаменатель :";
-		do
-		{
+		do {
 			std::cin >> val_2;
-			if (val_2 == 0) { std::cout << "Знаменатель не может быть 0 ! пропробуйте еще раз" << std::endl; };
+			if (val_2 == 0) { 
+				std::cout << "Знаменатель не может быть 0 ! пропробуйте еще раз" << std::endl; 
+			};
 		} while (val_2 == 0);
 		Denominator = val_2;
-	};;
+	};
 
 private:
 	int Numerator;
@@ -213,15 +212,13 @@ int main()
 	size_t sideX;
 	size_t sideY;
 	size_t sideH;
-	do
-	{
+	do {
 		std::cout << "Выберите форму линии : 1 - кривая, 2 - прямая :";
 		std::cin >> enter;
 
 	} while (enter != 1 && enter != 2);
 
-	if (enter == 1)
-	{
+	if (enter == 1) {
 		std::cout << "Введите радиус :";
 		std::cin >> enter;
 		Figure* figure;
@@ -229,16 +226,14 @@ int main()
 		figure = &circle;
 		figure->area();
 	}
-	else
-	{
-		do
-		{
+	else {
+		do {
 			std::cout << "Выберите форму 1 - прямоугольник, 2 - квадрат, 3 - ромб :";
 			std::cin >> enter;
 
 		} while (enter != 1 && enter != 2 && enter != 3);
-		if (enter == 1)
-		{
+
+		if (enter == 1) {
 			std::cout << "Введите размер стороны Х :";
 			std::cin >> sideX;
 			std::cout << "Введите размер стороны Y :";
@@ -248,8 +243,7 @@ int main()
 			figure = &rectangle;
 			figure->area();
 		}
-		else if (enter == 2)
-		{
+		else if (enter == 2) {
 			std::cout << "Введите размер стороны Х / Y :";
 			std::cin >> sideX;
 			Figure* figure;
@@ -257,8 +251,7 @@ int main()
 			figure = &square;
 			figure->area();
 		}
-		else if (enter == 3)
-		{
+		else if (enter == 3) {
 			std::cout << "Введите размер стороны :";
 			std::cin >> sideX;
 			std::cout << "Введите размер высоты Н :";
@@ -291,17 +284,15 @@ int main()
 	B.SetNumerator();
 	B.SetDenominator();
 	std::cout << "Дробь №2 = " << B.GetNumerator() << "/" << B.GetDenominator() << std::endl;
-	
+
 	do
 	{
 		std::cout << "Выберите действие над дробями : 1. математическое ; 2. унарное ; 3 логическое ";
 		std::cin >> enter;
 	} while (enter != 1 && enter != 2 && enter != 3);
-	
-	if (enter == 1)
-	{
-		do
-		{
+
+	if (enter == 1) {
+		do {
 			std::cout << "1. сложение ; 2. вычитание ; 3. умножение ; 4. деление ";
 			std::cin >> enter;
 		} while (enter != 1 && enter != 2 && enter != 3 && enter != 4);
@@ -312,18 +303,15 @@ int main()
 		enter = 0;
 		std::cout << "результат операции = " << result.GetNumerator() << "/" << result.GetDenominator() << std::endl;
 	}
-	else if (enter == 2)
-	{
+	else if (enter == 2) {
 		result = -A;
 		enter = 0;
 		std::cout << "результат операции = " << result.GetNumerator() << "/" << result.GetDenominator() << std::endl;
 		result = -B;
 		std::cout << "результат операции = " << result.GetNumerator() << "/" << result.GetDenominator() << std::endl;
 	}
-	else if (enter == 3)
-	{
-		do
-		{
+	else if (enter == 3) {
+		do {
 			std::cout << "1. сравнение ; 2. проверка неравенства ; 3. дробь №1 больше дроби №2 ; 4. дробь №1 меньше дроби №2 ";
 			std::cin >> enter;
 		} while (enter != 1 && enter != 2 && enter != 3 && enter != 4);
@@ -335,8 +323,4 @@ int main()
 		if (result_bool) { std::cout << "результат операции ИСТИНА" << std::endl; }
 		else { std::cout << "результат операции ЛОЖНО" << std::endl; }
 	}
-	
-	   
-	
-
-}
+};

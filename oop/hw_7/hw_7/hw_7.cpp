@@ -7,12 +7,13 @@ class smart_ptr
 private:
     T* m_ptr;
 public:
-    smart_ptr(T* ptr) : m_ptr(ptr) {
-    };
+    smart_ptr(T* ptr) : m_ptr(ptr) { };
     smart_ptr(const smart_ptr&) = delete;
     smart_ptr& operator=(const smart_ptr&) = delete;
     smart_ptr(smart_ptr&& ptr) : m_ptr(ptr.m_ptr) { ptr.m_ptr = nullptr; };
-    smart_ptr& operator=(smart_ptr&& prt) {
+    
+    smart_ptr& operator=(smart_ptr&& prt)
+    {
         if (&prt == this) {
             return *this;
         }
@@ -21,28 +22,32 @@ public:
         prt.m_ptr = nullptr;
         return *this;
     };
-    ~smart_ptr() { 
+
+    ~smart_ptr()
+    { 
         if (m_ptr == NULL) {
             delete m_ptr;
         };
     };
 
-    bool operator!=(const smart_ptr&) {
+    bool operator!=(const smart_ptr&)
+    {
         return m_ptr != NULL;
     }
+
     T& operator*() const { return *m_ptr; };
     T* operator->() const { return m_ptr; };
 
 };
 
-bool dateBiger(const smart_ptr<Date>& date1, const smart_ptr<Date>& date2) {
-
+bool dateBiger(const smart_ptr<Date>& date1, const smart_ptr<Date>& date2)
+{
     return ((date1->getYear() * 365 + date1->getMonth() * 30 + date1->getDay()) >
             (date2->getYear() * 365 + date2->getMonth() * 30 + date2->getDay()));
-    
 };
 
-void swap_ptr(smart_ptr<Date>& date1, smart_ptr<Date>& date2) {
+void swap_ptr(smart_ptr<Date>& date1, smart_ptr<Date>& date2)
+{
     smart_ptr<Date> ptrTemp(std::move(date2));
     date2 = std::move(date1);
     date1 = std::move(ptrTemp);
@@ -92,8 +97,7 @@ int main()
     if (dateBiger(date1, date2)) {
         std::cout << "date1 > date 2" << std::endl;
     }
-    else
-    {
+    else {
         std::cout << "date2 > date 1" << std::endl;
     }
 

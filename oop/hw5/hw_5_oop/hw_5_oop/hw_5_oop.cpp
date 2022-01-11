@@ -22,7 +22,7 @@ protected:
 	T1 value1;
 	T2 value2;
 public:
-	Pair(const T1& val1, const T2& val2) : value1(val1), value2(val2) {};
+	Pair(const T1& val1, const T2& val2) : value1(val1), value2(val2) { };
 	~Pair() = default;
 	const T1& first() { return value1; };
 	const T2& second() { return value2; };
