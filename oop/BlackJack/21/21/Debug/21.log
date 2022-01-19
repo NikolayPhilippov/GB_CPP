@@ -1,3 +1,15 @@
 ﻿  21.cpp
-D:\С++\4\BlackJack\21\21\21.cpp(53,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  21.vcxproj -> D:\С++\4\BlackJack\21\Debug\21.exe
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(280,32): error C2243: приведение типов: преобразование "House *" в "GenericPlayer &" существует, но недоступно
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(293,12): error C2247: нет доступа к "Hand::GetTotal", поскольку "House" использует "private" для наследования из "GenericPlayer"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(71): message : см. объявление "Hand::GetTotal"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(155): message : см. объявление "House"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(101): message : см. объявление "GenericPlayer"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(305,16): error C2247: нет доступа к "Hand::Clear", поскольку "House" использует "private" для наследования из "GenericPlayer"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(62): message : см. объявление "Hand::Clear"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(155): message : см. объявление "House"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(101): message : см. объявление "GenericPlayer"
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(314,32): warning C4566: символ, представленный универсальным именем символа "\u2660", невозможно представить в текущей кодовой странице (1251)
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(314,39): warning C4566: символ, представленный универсальным именем символа "\u2663", невозможно представить в текущей кодовой странице (1251)
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(314,46): warning C4566: символ, представленный универсальным именем символа "\u2665", невозможно представить в текущей кодовой странице (1251)
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(314,53): warning C4566: символ, представленный универсальным именем символа "\u2666", невозможно представить в текущей кодовой странице (1251)
+D:\repo_gb\GB_CPP\GB_CPP\oop\BlackJack\21\21\21.cpp(348,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
