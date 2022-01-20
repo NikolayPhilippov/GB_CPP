@@ -23,7 +23,6 @@ public:
 	};
 
 	Card(rank r, suit s, bool ifu = true) : m_Rank(r), m_Suit(s), m_IsFaceUp(ifu) { };
-	~Card() = default;
 
 	void Flip()
 	{
@@ -50,9 +49,12 @@ private:
 class Hand
 {
 public:
-	Hand() { m_Cards.reserve(7); };
+	Hand()
+	{
+		m_Cards.reserve(7); 
+	};
 
-	virtual ~Hand() { Clear(); };
+	~Hand() { Clear(); };
 	
 	void AddCard(Card* ptrCard)
 	{
@@ -70,9 +72,13 @@ public:
 
 	int GetTotal() const 
 	{
-		if (m_Cards.empty()) { return 0; }
+		if (m_Cards.empty()) {
+			return 0;
+		}
 
-		if (m_Cards[0]->GetValue() == 0) { return 0; }
+		if (m_Cards[0]->GetValue() == 0) {
+			return 0;
+		}
 
 		int total{ 0 };
 		
@@ -98,12 +104,15 @@ protected:
 
 };
 
+
 class GenericPlayer : public Hand
 {
 	friend std::ostream& operator << (std::ostream& out, const GenericPlayer& aGenericPlayer);
 
 public:
-	GenericPlayer(const std::string& name = "") : m_Name(name) { };
+
+	GenericPlayer(const std::string& name) : m_Name(name) { };
+
 	virtual ~GenericPlayer() {};
 	
 	virtual bool IsHitting() const = 0;
@@ -125,12 +134,13 @@ protected:
 class Player : public GenericPlayer
 {
 public:
+
 	Player(const std::string& name = "") : GenericPlayer(name) { };
 	virtual ~Player() { };
 	
 	virtual bool IsHitting() const 
 	{
-		std::cout << m_Name << ", do you want a hit? (Y/N): ";
+		std::cout << m_Name << ", do you want a hit? Y or N : ";
 		char response;
 		std::cin >> response;
 		return (response == 'y' || response == 'Y');
@@ -152,10 +162,11 @@ public:
 	};
 };
 
-class House : private GenericPlayer
+class House : public GenericPlayer
 {
 public:
-	House(const std::string & name = "House") { };
+
+	House(const std::string & name = "House") : GenericPlayer(name) { };
 	virtual ~House() { };
 	virtual bool IsHitting() const
 	{
@@ -176,15 +187,13 @@ public:
 class Deck : public Hand
 {
 public:
+
 	Deck();
 	virtual ~Deck() { };
-
 	void Populate();
 	void Shuffle();
 	void Deal(Hand& aHend);
 	void AdditionalCards(GenericPlayer& aGenericPlayer);
-private:
-
 };
 
 Deck::Deck()
@@ -240,7 +249,6 @@ class Game
 public:
 	Game(const std::vector<std::string>& names);
 	~Game() { };
-
 	void Play();
 
 private:
@@ -265,18 +273,18 @@ void Game::Play()
 		for (auto it = m_Players.begin(); it != m_Players.end(); ++it) {
 			m_Deck.Deal(*it);
 		}
+		m_Deck.Deal(m_House);
 	}
-	m_House.FlipFirstCard();
 	for (auto  it = m_Players.begin(); it != m_Players.end(); ++it) {
 		std::cout << *it << std::endl;
 	}
-//??	std::cout << m_House  << " " << std::endl;
+	std::cout << m_House  << " " << std::endl;
 
 	for (auto it = m_Players.begin(); it != m_Players.end(); ++it) {
 		m_Deck.AdditionalCards(*it);
 	}
 	m_House.FlipFirstCard();
-//	std::cout << std::endl << m_House;
+	std::cout << std::endl << m_House;
 	m_Deck.AdditionalCards(m_House);
 	if (m_House.IsHitting()) { 
 		for (auto it = m_Players.begin(); it != m_Players.end(); ++it) {
@@ -306,12 +314,10 @@ void Game::Play()
 };
 
 
-
-
 std::ostream& operator << (std::ostream& out, const Card& aCard)
 {
 	const std::string RANKS[] = { "0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-	const std::string SUITS[] = { "♠", "♣", "♥", "♦" };
+	const std::string SUITS[] = { "s", "c", "h", "d" };
 
 	if (aCard.m_IsFaceUp) {
 		out << RANKS[aCard.m_Rank] << SUITS[aCard.m_Suit];
@@ -341,11 +347,35 @@ std::ostream& operator << (std::ostream& out, const GenericPlayer& aGenericPlaye
 };
 
 
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	srand(time(0));
+	
+	int players{ 0 };
+	std::vector<std::string> names;
+	std::string name;
+	char gotoPlay = 'y';
 
+	while ((players < 1) || (players > 7))
+	{
+		std::cout << "How many players ? 1-7 = ";
+		std::cin >> players;
+	}
+
+	for (size_t i = 0; i < players; ++i) {
+		std::cout << "Enter name player ";
+		std::cin >> name;
+		names.push_back(name);
+	}
+
+	std::cout << std::endl << std::endl;
+
+	Game game(names);
+	while ((gotoPlay != 'n') || (gotoPlay != 'N')) {
+		game.Play();
+		std::cout << std::endl << "let's play again ? Y or N : ";
+		std::cin >> gotoPlay;
+	}
+	return 0;
 }
 
